@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 80, 0, 0;
+  --background-end-rgb: 40, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .nav-item {
+    @apply text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer;
+  }
+
+  .nav-item-active {
+    @apply text-white;
+  }
+}

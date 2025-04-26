@@ -4,23 +4,114 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 80, 0, 0;
-  --background-end-rgb: 40, 0, 0;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, rgb(var(--background-start-rgb)), rgb(var(--background-end-rgb)));
-  min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
-@layer components {
-  .nav-item {
-    @apply text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes distort {
+  0% {
+    transform: scale(1) translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: scale(1.05) translate(2px, -2px) rotate(1deg);
+  }
+  40% {
+    transform: scale(0.95) translate(-2px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: scale(1.03) translate(3px, 0) rotate(0.5deg);
+  }
+  80% {
+    transform: scale(0.97) translate(-1px, 1px) rotate(-0.5deg);
+  }
+  100% {
+    transform: scale(1) translate(0, 0) rotate(0);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes static {
+  0% {
+    text-shadow: 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  }
+  25% {
+    text-shadow: -1px 1px #fff, 1px -1px #fff, -1px -1px #fff, 1px 1px #fff;
+  }
+  50% {
+    text-shadow: 1px -1px #fff, -1px 1px #fff, 1px 1px #fff, -1px -1px #fff;
+  }
+  75% {
+    text-shadow: -1px -1px #fff, 1px 1px #fff, -1px 1px #fff, 1px -1px #fff;
+  }
+  100% {
+    text-shadow: 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  }
+}
+
+/* Add perspective utility for 3D effects */
+@layer utilities {
+  .perspective-\[800px\] {
+    perspective: 800px;
   }
 
-  .nav-item-active {
-    @apply text-white;
+  .rotate-x-12 {
+    transform: rotateX(12deg);
+  }
+}
+
+/* Add glow pulse animation */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+  }
+}
+
+@keyframes glow-fade {
+  0% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+}
+
+@layer utilities {
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-glow-fade {
+    animation: glow-fade 2s ease-out forwards;
   }
 }
