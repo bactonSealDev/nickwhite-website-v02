@@ -17,6 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Adobe Fonts (Typekit) */}
+        <link rel="stylesheet" href="https://use.typekit.net/nxv7dpf.css" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
