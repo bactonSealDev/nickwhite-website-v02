@@ -86,17 +86,7 @@ body {
   }
 }
 
-/* Add glow pulse animation */
-@keyframes glow-pulse {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
-  }
-}
-
+/* Add glow fade animation */
 @keyframes glow-fade {
   0% {
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
@@ -107,11 +97,17 @@ body {
 }
 
 @layer utilities {
-  .animate-glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
   .animate-glow-fade {
     animation: glow-fade 2s ease-out forwards;
+  }
+}
+
+@layer components {
+  .nav-item {
+    @apply text-white text-opacity-80 hover:text-opacity-100;
+  }
+
+  .nav-item-active {
+    @apply text-white text-opacity-100;
   }
 }

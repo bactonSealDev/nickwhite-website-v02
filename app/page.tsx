@@ -41,14 +41,14 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-10 flex flex-col h-screen p-6 md:p-12 lg:p-16">
         <header className="mb-12 md:mb-16">
-        <h1 className="text-5xl md:text-7xl font-light tracking-wider font-brother">NICK WHITE</h1>
+          <h1 className="text-5xl md:text-7xl font-light tracking-wider font-brother">NICK WHITE</h1>
         </header>
 
         <nav className="flex flex-col space-y-4 md:space-y-6">
           {sections.map((section) => (
             <div
               key={section.id}
-              className={`text-2xl md:text-3xl lg:text-4xl font-light  font-brother select-none cursor-pointer ${
+              className={`text-2xl md:text-3xl lg:text-4xl font-light font-brother select-none cursor-pointer transition-all duration-700 hover:tracking-[0.15em] filter hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] hover:animate-glow-fade ${
                 activeSection === section.id ? "nav-item-active" : "nav-item"
               }`}
               onMouseEnter={() => setActiveSection(section.id)}
