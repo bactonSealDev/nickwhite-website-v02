@@ -48,9 +48,9 @@ export default function Home() {
           {sections.map((section) => (
             <div
               key={section.id}
-              className={`text-2xl md:text-3xl lg:text-4xl font-light font-brother select-none cursor-pointer transition-all duration-700 hover:tracking-[0.15em] filter hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] hover:animate-glow-fade ${
-                activeSection === section.id ? "nav-item-active" : "nav-item"
-              }`}
+              className={`text-2xl md:text-3xl lg:text-4xl font-light font-brother select-none cursor-pointer ${
+                activeSection === section.id ? "text-white" : "text-gray-400"
+              } transition-all duration-700 hover:text-white hover:tracking-[0.15em]  filter hover:[filter:drop-shadow(0_0_8px_rgba(255,255,255,0.7))_drop-shadow(0_0_15px_rgba(255,255,255,0.5))] hover:animate-glow-fade`}
               onMouseEnter={() => setActiveSection(section.id)}
               onClick={() => handleSectionClick(section.id, section.path)}
             >
