@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Add perspective utility for 3D effects */
+@layer utilities {
+  .perspective-\[800px\] {
+    perspective: 800px;
+  }
+
+  .rotate-x-12 {
+    transform: rotateX(12deg);
+  }
+}
+
+/* Glow animations */
+@keyframes glow-fade {
+  0% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+  }
+  100% {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+  }
+}
+
+@layer utilities {
+  .animate-glow-fade {
+    animation: glow-fade 2s ease-out forwards;
+  }
+}
+
+@layer components {
+  .nav-item {
+    @apply text-white text-opacity-80 hover:text-opacity-100;
+  }
+
+  .nav-item-active {
+    @apply text-white text-opacity-100;
+  }
+
+  /* Glow text component class - FIXED */
+  .glow-text {
+    @apply transition-all duration-700;
+  }
+
+  .glow-text:hover {
+    @apply text-white;
+    letter-spacing: 0.15em;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1));
+    animation: glow-fade 4s ease-out forwards;
+  }
+}
